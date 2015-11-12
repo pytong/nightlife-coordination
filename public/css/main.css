@@ -1,0 +1,65 @@
+/********* Fonts **********/
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url('../fonts/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Roboto Medium'), local('Roboto-Medium'), url('../fonts/Roboto-Medium.ttf') format('truetype');
+}
+
+/****** Main Styling ******/
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	background-color: #31B0D5;
+	margin: 20px 0;
+	padding: 10px;
+	color: #FFF;
+	text-align: center;
+	font-size: 36px;
+}
+
+/********  Styling ********/
+
+.signin, .signup {
+	margin: 86px auto 0 auto;
+	text-align: center;
+}
+
+.twitter-btn {
+	margin: 20px 0 0 10px;
+	width: 208px;
+}
+
+.twitter-btn p {
+	margin: 8px 0 0 0;
+}
+
+.submit-btn {
+	margin-top: 20px;
+	line-height: 32px;
+	font-size: 16px;
+}
+
+.btn > img {
+	float: left;
+	margin-right: 5px;
+}
+
+.slogan {
+	font-style: italic;
+	color: #777;
+}
