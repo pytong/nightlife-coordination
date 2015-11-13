@@ -10,8 +10,7 @@ module.exports = function (app, passport) {
 		.get(function(req, res) {
 			var location = req.query.location;
 			searchUtil.search(location, function(success, result) {
-				console.log(result);
-				res.json({success: success, result})
+				res.json({success: success, result: result})
 			});
 		});
 

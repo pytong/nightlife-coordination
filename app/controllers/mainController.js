@@ -5,7 +5,11 @@
             var location = $scope.search.location;
 
             SearchService.businesses().get({location: location}, function(res) {
-
+                if(res.success === true) {
+                    $scope.businesses = res.result;
+                } else {
+                    $scope.errorMessage = res.result;
+                }
             });
         }
 

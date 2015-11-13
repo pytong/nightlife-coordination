@@ -1,6 +1,8 @@
-<div class="text-center">
+<div>
     <navigation-bar></navigation-bar>
-	<img src="/public/img/NiteLife-Planner-logo.png" />
+	<div class="text-center">
+        <img src="/public/img/NiteLife-Planner-logo.png" />
+	</div>
 	
     <form novalidate name="form" ng-submit="searchForBusinesses()" method="post">
         <div class="row text-center">
@@ -12,4 +14,10 @@
             </div>
         </div>
     </form>
+
+    <div ng-repeat="business in businesses">
+        <div><img src="{{ business.image_url }}" /></div>
+        <div>{{ business.name }}</div>
+        <div>{{ business.description }}</div>
+    </div>
 </div>
