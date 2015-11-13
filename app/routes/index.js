@@ -5,6 +5,12 @@ var path = process.cwd();
 
 module.exports = function (app, passport) {
 
+	app.route('/api/search')
+		.get(function(req, res) {
+			var location = req.query.location;
+			console.log(location);
+		});
+
 	app.route('/api/users/login_status')
 		.get(function(req, res) {
 			var status = req.isAuthenticated();
