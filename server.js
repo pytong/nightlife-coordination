@@ -1,5 +1,7 @@
 'use strict';
 
+require('dotenv').load(); // Only required for running locally
+
 var express = require('express');
 var routes = require('./app/routes/index.js');
 var mongoose = require('mongoose');
@@ -10,8 +12,6 @@ var bodyParser = require('body-parser');
 var flash = require('connect-flash');
 var app = express();
 
-
-require('dotenv').load(); // Only required for running locally
 require('./app/config/passport')(passport);
 
 mongoose.connect(process.env.MONGO_URI);

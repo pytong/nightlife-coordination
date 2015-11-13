@@ -1,6 +1,7 @@
 'use strict';
 
-var path = process.cwd();
+var path = process.cwd(),
+	searchUtil = require("../utils/searchUtil");
 
 
 module.exports = function (app, passport) {
@@ -8,7 +9,10 @@ module.exports = function (app, passport) {
 	app.route('/api/search')
 		.get(function(req, res) {
 			var location = req.query.location;
-			console.log(location);
+			searchUtil.search(location, function(success, result) {
+				console.log(result);
+				res.json({success: success, result})
+			});
 		});
 
 	app.route('/api/users/login_status')
