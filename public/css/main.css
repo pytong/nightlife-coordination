@@ -23,15 +23,6 @@ body {
 	padding: 0;
 }
 
-header {
-	background-color: #31B0D5;
-	margin: 20px 0;
-	padding: 10px;
-	color: #FFF;
-	text-align: center;
-	font-size: 36px;
-}
-
 /********  Styling ********/
 
 .signin, .signup {
@@ -86,17 +77,17 @@ header {
 
 .business-image {
 	float: left;
+	margin-right: 20px;
 	border-radius: 5px;
 }
 
 .business-details {
 	float: left;
-	margin-left: 20px;
 	font-size: 0.85em;
 }
 
 a.business-name {
-	font-size: 1.25em;
+	font-size: 1.26em;
 }
 
 a.business-name, a.business-name:hover,
@@ -106,4 +97,12 @@ a.business-description, a.business-description:hover {
 
 a.business-name, a.business-description {
 	text-decoration: none;
+}
+
+.num-going {
+	border: solid 1px;
+	border-radius: 5px;
+	margin-left: 20px;
+	padding: 0 5px;
+	font-size: 1.26em;
 }
