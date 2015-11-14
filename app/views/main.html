@@ -15,9 +15,12 @@
         </div>
     </form>
 
-    <div ng-repeat="business in businesses">
-        <div><img src="{{ business.image_url }}" /></div>
-        <div>{{ business.name }}</div>
-        <div>{{ business.description }}</div>
+    <div class="business row" ng-repeat="business in businesses">
+        <img class="business-image" src="{{ business.image_url }}" />
+        <div class="business-details">
+            <a class="business-name">{{ business.name }}</a>
+            <div>{{ business.description }}</div>
+        </div>
     </div>
+
 </div>
