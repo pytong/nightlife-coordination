@@ -10,16 +10,16 @@
                 <input required type="text" class="form-control location text-center" placeholder="Where will you be?" ng-model="search.location">
             </div>
             <div class="col-xs-2">
-                <input type="submit" class="btn btn-primary submit-btn" value="Go" />
+                <input type="submit" class="btn btn-primary search-btn" value="Go" />
             </div>
         </div>
     </form>
 
     <div class="business row" ng-repeat="business in businesses">
-        <img class="business-image" src="{{ business.image_url }}" />
+        <a href="{{ business.url }}" target="_blank"><img class="business-image" ng-src="{{ business.image_url }}" alt="Business Image"/></a>
         <div class="business-details">
-            <a class="business-name">{{ business.name }}</a>
-            <div>{{ business.description }}</div>
+            <a href="{{ business.url }}" target="_blank" class="business-name">{{ business.name }}</a>
+            <div><a href="{{ business.url }}" target="_blank" class="business-description">{{ business.description }}</a></div>
         </div>
     </div>
 

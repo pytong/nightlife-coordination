@@ -25,6 +25,7 @@ module.exports = {
             data.businesses.forEach(function(business) {
                 businesses.push({
                     name: business.name,
+                    url: business.url,
                     description: business.snippet_text,
                     image_url: business.image_url
                 });
