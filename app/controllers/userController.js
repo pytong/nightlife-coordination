@@ -7,7 +7,7 @@
             UserService.signin(username, password)
                 .get(
                     function(res) { //success
-                        window.location.href = "#/account";
+                        window.location.href = "#/";
                     },
                     function(err) { //error
                         $scope.error = "Incorrect email or password";
@@ -23,7 +23,7 @@
             UserService.signup(name, username, password)
                 .save(
                     function(res) { //success
-                        window.location.href = "#/account";
+                        window.location.href = "#/";
                     },
                     function(err) { //error
                         $scope.error = "Failed to register.";

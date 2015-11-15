@@ -105,4 +105,5 @@ a.business-name, a.business-description {
 	margin-left: 20px;
 	padding: 0 5px;
 	font-size: 1.26em;
+	cursor: pointer
 }

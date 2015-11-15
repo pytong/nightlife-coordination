@@ -12,7 +12,7 @@
                 $scope.showRegisterLink = false;
 
                 if($location.path() === "/signin" || $location.path() === "/signup") {
-                    window.location.href = "#/account";
+                    window.location.href = "#/";
                 }
             } else {
                 $scope.showLogoutLink = false;
