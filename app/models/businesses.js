@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
 
     Business = new Schema({
-        name: String,
+        business_id: String,
         usernames: Schema.Types.Mixed
     });
 
