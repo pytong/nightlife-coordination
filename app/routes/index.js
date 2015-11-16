@@ -1,10 +1,27 @@
 'use strict';
 
 var path = process.cwd(),
-	searchUtil = require("../utils/searchUtil");
+	searchUtil = require("../utils/searchUtil"),
+	rsvpUtil = require("../utils/rsvpUtil");
 
 
 module.exports = function (app, passport) {
+
+	app.route('/api/rsvp')
+		.post(function(req, res) {
+			var business_id = req.query.business_id,
+				query = req.query,
+				username;
+
+			if(req.isAuthenticated()) {
+				username = req.user.username ? req.user.username : req.user.twitter.username;
+				rsvpUtil.rsvp(business_id, username, function(success) {
+					res.json({success: success});
+				});
+			} else {
+				res.json({success: false, message: "You are not authenticated."});
+			}
+		});
 
 	app.route('/api/search')
 		.get(function(req, res) {

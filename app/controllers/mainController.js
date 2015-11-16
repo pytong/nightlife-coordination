@@ -18,7 +18,7 @@
                 if(res.status === false) {
                     window.location.href = "#/signin";
                 } else {
-                    RsvpService.rsvp().post({business_id: business_id}, function(res) {
+                    RsvpService.rsvp().save({business_id: business_id}, function(res) {
                         if(res.success === true) {
 
                         } else {

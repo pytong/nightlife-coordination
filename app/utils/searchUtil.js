@@ -49,12 +49,12 @@ module.exports = {
 
                 businesses.forEach(function(businessJson, index) {
                     if(typeof(businessRsvpMap[businessJson.id]) !== "undefined" && businessRsvpMap[businessJson.id] !== null) {
-                        businesses[index].count = businessRsvpMap[businessJson.id];
+                        businesses[index].rsvp_count = businessRsvpMap[businessJson.id];
                     } else {
-                        businesses[index].count = 0;
+                        businesses[index].rsvp_count = 0;
                     }
                 });
-                console.log(businesses);
+
                 callback(true, businesses);
             });
 
