@@ -15,12 +15,25 @@ module.exports = function (app, passport) {
 
 			if(req.isAuthenticated()) {
 				username = req.user.username ? req.user.username : req.user.twitter.username;
-				rsvpUtil.rsvp(business_id, username, function(success) {
-					res.json({success: success});
+				rsvpUtil.rsvp(business_id, username, function(success, message) {
+					res.json({success: success, message: message});
 				});
 			} else {
 				res.json({success: false, message: "You are not authenticated."});
 			}
+		});
+
+	app.route('/api/rsvp')
+		.get(function(req, res) {
+			var business_id = req.query.business_id;
+
+			rsvpUtil.getRsvp(business_id, function(success, result) {
+				if(success === true) {
+					res.json({success: true, count: result});
+				} else {
+					res.json({success: false, message: result});
+				}
+			});
 		});
 
 	app.route('/api/search')

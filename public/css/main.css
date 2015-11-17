@@ -107,3 +107,9 @@ a.business-name, a.business-description {
 	font-size: 1.26em;
 	cursor: pointer
 }
+
+.error-message {
+	margin-top: 20px;
+	font-weight: bold;
+	font-style:italic;
+}
