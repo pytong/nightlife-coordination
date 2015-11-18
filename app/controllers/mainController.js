@@ -37,12 +37,20 @@
 
 
         UserService.profile().get(function(res) {
-            var searchTerms = res.profile.lastSearchTerms;
+            var lastSearchTerms,
+                profile = res.profile;
 
-            $(".location").val(searchTerms);
-            if(res.success === true && searchTerms !== null && typeof(searchTerms) !== "undefined" && searchTerms.length > 0) {
-                $scope.searchForBusinesses(searchTerms);
+            if(typeof(profile) === "undefined" || profile === null) {
+                return;
             }
+
+            lastSearchTerms = res.profile.lastSearchTerms;
+            if (typeof(lastSearchTerms) === "undefined" || lastSearchTerms === null || lastSearchTerms.length === 0) {
+                return;
+            }
+
+            $(".location").val(lastSearchTerms);
+            $scope.searchForBusinesses(lastSearchTerms);
         });
 
     }]);
