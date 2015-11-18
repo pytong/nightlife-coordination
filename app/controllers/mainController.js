@@ -1,9 +1,7 @@
 (function(app) {
     app.controller("MainController", ["$scope", "UserService", "SearchService", "RsvpService", function($scope, UserService, SearchService, RsvpService) {
 
-        $scope.searchForBusinesses = function() {
-            var location = $scope.search.location;
-
+        $scope.searchForBusinesses = function(location) {
             SearchService.businesses().get({location: location}, function(res) {
                 if(res.success === true) {
                     $scope.businesses = res.result;
@@ -36,6 +34,15 @@
                 }
             });
         }
+
+
+        UserService.profile().get(function(res) {
+            var searchTerms = res.profile.lastSearchTerms;
+
+            if(res.success === true && searchTerms !== null && typeof(searchTerms) !== "undefined" && searchTerms.length > 0) {
+                $scope.searchForBusinesses(searchTerms);
+            }
+        });
 
     }]);
 })(app);

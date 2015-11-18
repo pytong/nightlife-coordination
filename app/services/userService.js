@@ -24,5 +24,9 @@
             return $resource(appUrl + "/api/users/logout");
         }
 
+        this.profile = function() {
+            return $resource(appUrl + "/api/users/profile");
+        }
+
     }]);
 })(app);

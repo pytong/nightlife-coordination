@@ -39,9 +39,24 @@ module.exports = function (app, passport) {
 	app.route('/api/search')
 		.get(function(req, res) {
 			var location = req.query.location;
+
+			if(req.isAuthenticated()) {
+				req.user.lastSearchTerms = location;
+				req.user.save();
+			}
+
 			searchUtil.search(location, function(success, result) {
 				res.json({success: success, result: result})
 			});
+		});
+
+	app.route('/api/users/profile')
+		.get(function(req, res) {
+			if(req.isAuthenticated()) {
+				res.json({success: true, profile: req.user});
+			} else {
+				res.json({success: false});
+			}
 		});
 
 	app.route('/api/users/login_status')

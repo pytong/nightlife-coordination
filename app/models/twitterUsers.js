@@ -8,7 +8,8 @@ var mongoose = require('mongoose'),
 			id: String,
 			name: String,
 			username: String
-		}
+		},
+		lastSearchTerms: String
 	});
 
 module.exports = mongoose.model('TwitterUser', TwitterUser);

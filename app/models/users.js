@@ -5,7 +5,8 @@ var mongoose = require('mongoose'),
 
 	User = new Schema({
 		username: String,
-		password: String
+		password: String,
+		lastSearchTerms: String
 	});
 
 module.exports = mongoose.model('User', User);
