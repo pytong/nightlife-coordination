@@ -39,6 +39,7 @@
         UserService.profile().get(function(res) {
             var searchTerms = res.profile.lastSearchTerms;
 
+            $(".location").val(searchTerms);
             if(res.success === true && searchTerms !== null && typeof(searchTerms) !== "undefined" && searchTerms.length > 0) {
                 $scope.searchForBusinesses(searchTerms);
             }

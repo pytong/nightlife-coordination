@@ -18,7 +18,7 @@
 	<div class="text-center error-message">{{ errorMessage }}</div>
 
     <div class="business row" ng-repeat="business in businesses">
-        <a href="{{ business.url }}" target="_blank"><img class="business-image" ng-src="{{ business.image_url }}" alt="Business Image"/></a>
+        <a href="{{ business.url }}" target="_blank"><img class="business-image" ng-src="{{ business.image_url || 'https://placeholdit.imgix.net/~text?txtsize=9&txt=100%C3%97100&w=100&h=100' }}" alt="Business Image"/></a>
         <div class="business-details">
             <a href="{{ business.url }}" target="_blank" class="business-name">{{ business.name }}</a><span ng-click="rsvp(business.id, $index)" class="num-going">{{ business.rsvp_count }} GOING</span>
             <div><a href="{{ business.url }}" target="_blank" class="business-description">{{ business.description }}</a></div>
