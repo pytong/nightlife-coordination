@@ -21,11 +21,14 @@ module.exports = {
             business_ids = [],
             businessRsvpMap = {};
 
+        if(location.trim().length < 1) {
+            callback(true, []);
+        }
+
         client.search({
             term: "nightlife",
             location: location
         }).then(function (data) {
-
             data.businesses.forEach(function(business) {
                 business_ids.push(business.id);
 

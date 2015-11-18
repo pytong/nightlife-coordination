@@ -6,7 +6,7 @@
                 if(res.success === true) {
                     $scope.businesses = res.result;
                 } else {
-                     $scope.businesses = [];
+                    $scope.businesses = [];
                     $scope.errorMessage = res.result;
                 }
             });
