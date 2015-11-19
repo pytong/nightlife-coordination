@@ -7,51 +7,46 @@ var path = process.cwd(),
 
 module.exports = function (app, passport) {
 
-	app.route('/api/rsvp')
-		.post(function(req, res) {
-			var business_id = req.query.business_id,
-				query = req.query,
-				username;
+	app.post('/api/rsvp', function(req, res) {
+		var business_id = req.query.business_id,
+			username;
 
-			if(req.isAuthenticated()) {
-				username = req.user.username ? req.user.username : req.user.twitter.username;
-				rsvpUtil.rsvp(business_id, username, function(success, message) {
-					res.json({success: success, message: message});
-				});
+		if(req.isAuthenticated()) {
+			username = req.user.username ? req.user.username : req.user.twitter.username;
+			rsvpUtil.rsvp(business_id, username, function(success, message) {
+				res.json({success: success, message: message});
+			});
+		} else {
+			res.json({success: false, message: "You are not authenticated."});
+		}
+	});
+
+	app.get('/api/rsvp', function(req, res) {
+		var business_id = req.query.business_id;
+
+		rsvpUtil.getRsvp(business_id, function(success, result) {
+			if(success === true) {
+				res.json({success: true, count: result});
 			} else {
-				res.json({success: false, message: "You are not authenticated."});
+				res.json({success: false, message: result});
 			}
 		});
+	});
 
-	app.route('/api/rsvp')
-		.get(function(req, res) {
-			var business_id = req.query.business_id;
+	app.get('/api/search', function(req, res) {
+		var location = req.query.location;
 
-			rsvpUtil.getRsvp(business_id, function(success, result) {
-				if(success === true) {
-					res.json({success: true, count: result});
-				} else {
-					res.json({success: false, message: result});
-				}
-			});
+		if(req.isAuthenticated()) {
+			req.user.lastSearchTerms = location;
+			req.user.save();
+		}
+
+		searchUtil.search(location, function(success, result) {
+			res.json({success: success, result: result})
 		});
+	});
 
-	app.route('/api/search')
-		.get(function(req, res) {
-			var location = req.query.location;
-
-			if(req.isAuthenticated()) {
-				req.user.lastSearchTerms = location;
-				req.user.save();
-			}
-
-			searchUtil.search(location, function(success, result) {
-				res.json({success: success, result: result})
-			});
-		});
-
-	app.route('/api/users/profile')
-		.get(function(req, res) {
+	app.get('/api/users/profile', function(req, res) {
 			if(req.isAuthenticated()) {
 				res.json({success: true, profile: req.user});
 			} else {
@@ -59,43 +54,35 @@ module.exports = function (app, passport) {
 			}
 		});
 
-	app.route('/api/users/login_status')
-		.get(function(req, res) {
-			var status = req.isAuthenticated();
-			res.json({status: status});
-		});
+	app.get('/api/users/login_status', function(req, res) {
+		var status = req.isAuthenticated();
+		res.json({status: status});
+	});
 
-	app.route('/api/users/signin')
-		.get(
-			passport.authenticate('local-signin'),
-			function(req, res) {
-				res.json({success: true});
-			});
-
-	app.route('/api/users/signup-submit')
-		.post(passport.authenticate('local-signup'),
-			function(req, res) {
-				res.json({success: true});
-			});
-
-	app.route('/api/users/logout')
-		.post(function (req, res) {
-			req.logout();
+	app.get('/api/users/signin', passport.authenticate('local-signin'),
+		function(req, res) {
 			res.json({success: true});
 		});
 
-	app.route('/auth/twitter')
-		.get(passport.authenticate('twitter'));
-
-	app.route('/auth/twitter/callback')
-		.get(passport.authenticate('twitter', { failureRedirect: '/#/signin' }),
-			function(req, res) {
-				res.redirect('/#/account');
+	app.post('/api/users/signup-submit', passport.authenticate('local-signup'),
+		function(req, res) {
+			res.json({success: true});
 		});
 
-	app.route("*")
-		.get(function (req, res) {
-			res.sendFile(path + '/public/index.html');
+	app.post('/api/users/logout', function (req, res) {
+		req.logout();
+		res.json({success: true});
+	});
+
+	app.get('/auth/twitter', passport.authenticate('twitter'));
+
+	app.get('/auth/twitter/callback', passport.authenticate('twitter', { failureRedirect: '/#/signin' }),
+		function(req, res) {
+			res.redirect('/#/account');
 		});
+
+	app.get("*", function (req, res) {
+		res.sendFile(path + '/public/index.html');
+	});
 
 };
