@@ -2,7 +2,7 @@
 
 ## Overview
 
-This application allows you to create your own customized polls and share them with other people.
+This application allows you to search for bars in an area and RSVP.
 
 Features:
 
