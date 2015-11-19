@@ -1,4 +1,4 @@
-# Voting App
+# Nightlife Coordination App
 
 ## Overview
 
