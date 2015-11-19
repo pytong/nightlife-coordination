@@ -113,3 +113,7 @@ a.business-name, a.business-description {
 	font-weight: bold;
 	font-style:italic;
 }
+
+.footer {
+	margin-bottom: 50px;
+}
