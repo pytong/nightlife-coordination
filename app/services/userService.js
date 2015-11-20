@@ -2,6 +2,12 @@
     app.service("UserService", ["$resource", "$location", function($resource, $location) {
         var appUrl = $location.protocol() + "://" + $location.host();
 
+        this.emailExists = function(username) {
+            return $resource(appUrl + "/api/users/email_exists", {
+                username: username
+            });
+        }
+
         this.loginStatus = function() {
             return $resource(appUrl + "/api/users/login_status");
         }

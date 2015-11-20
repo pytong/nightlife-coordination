@@ -2,6 +2,12 @@
 	<navigation-bar></navigation-bar>
 	<div class="signup">
 		<div>
+			<div class="alert alert-danger" role="alert" ng-show="error">
+				<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+				<span class="sr-only">Error:</span>
+				{{ error }}
+			</div>
+
 		    <form novalidate name="form" ng-submit="signup()" method="post">
 			    Name: <input required type="text" ng-model="user.name" name="name" class="form-control ng-pristine ng-valid ng-touched"/>
 				<div ng-show="form.$submitted || form.name.$dirty">
