@@ -43,8 +43,8 @@ YELP_CONSUMER_KEY=your-yelp-consumer-key
 YELP_CONSUMER_SECRET=your-yelp-consumer-secret
 YELP_TOKEN=your-yelp-token
 YELP_TOKEN_SECRET=your-yelp-token-secret
-MONGO_URI=mongodb://localhost:27017/voting
-APP_URL=https://voting-pytong.c9.io/
+MONGO_URI=mongodb://localhost:27017/nightlife-coordination
+APP_URL=https://nightlife-coordination-pytong.c9.io/
 PORT=8080
 ```
 
