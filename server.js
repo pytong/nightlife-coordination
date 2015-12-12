@@ -8,16 +8,12 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
 var FileStore = require('session-file-store')(session);
-var bodyParser = require('body-parser');
-var flash = require('connect-flash');
 var app = express();
 
 require('./app/config/passport')(passport);
 
 mongoose.connect(process.env.MONGO_URI);
 
-app.use(flash());
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/controllers', express.static('app/controllers'));
 app.use('/services', express.static('app/services'));
 app.use('/views', express.static('app/views'));
